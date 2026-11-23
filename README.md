@@ -155,7 +155,7 @@ Read [security](docs/security.md) before pointing Nalar at a private repository.
 ## Development
 
 ```bash
-python -m unittest discover -s tests -v        # 1006 tests
+python -m unittest discover -s tests -v        # 1007 tests
 ruff check --select E9,F63,F7,F82,F601 nalar tests
 scripts/release-check.sh                        # tests, lint, wheel, matrix
 python scripts/compat-smoke.py                  # Linux/macOS/Windows smoke
