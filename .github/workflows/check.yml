@@ -1,0 +1,23 @@
+name: Checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip wheel --no-deps --wheel-dir /tmp/nalar-wheel .
+      - run: python -m pip install /tmp/nalar-wheel/*.whl
+      - run: python -m pip install ruff
+      - run: ruff check --select E9,F63,F7,F82,F601 nalar tests
+      - run: python -m unittest discover -s tests -v
+      - run: nalar --version && nalar completions bash > /dev/null
+      - run: nalar code --help && nalar chat --help && nalar code-bench --help && nalar tui --help
+        working-directory: /tmp

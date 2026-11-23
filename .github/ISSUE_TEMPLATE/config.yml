@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/hamskillah/nalar-agent/security/advisories/new
+    about: Report vulnerabilities privately, never in a public issue.
+  - name: Usage and architecture
+    url: https://github.com/hamskillah/nalar-agent#documentation
+    about: Read the README, runtime and usage reference before opening an issue.

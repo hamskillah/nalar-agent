@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nalar-agent"
+version = "0.7.281"
+description = "Local-first coding agent with reviewable Git patches and BYOK"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.12"
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.12",
+    "OS Independent",
+]
+dependencies = ["textual>=6,<7"]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.6"]
+
+[project.scripts]
+nalar = "nalar.__main__:main"
+
+[tool.setuptools]
+packages = ["nalar", "nalar.assets"]
+license-files = ["LICENSE", "NOTICE"]
+
+[tool.setuptools.package-data]
+nalar = ["assets/*.html", "assets/*.css", "assets/*.js", "assets/*.tcss"]
+
+[tool.setuptools.exclude-package-data]
+nalar = ["__pycache__", "__pycache__/*", "*.pyc", "*.pyo"]

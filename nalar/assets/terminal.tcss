@@ -1,0 +1,40 @@
+Screen {
+    background: #101816;
+    color: #e1ece6;
+    scrollbar-background: #101816;
+    scrollbar-color: #456659;
+}
+#banner {
+    height: 3;
+    padding: 0 2;
+    background: #1b2924;
+    align-vertical: middle;
+}
+#wordmark { width: 1fr; color: #7fe2b8; text-style: bold; }
+#surface { width: auto; color: #a9beb2; }
+#workspace { height: 1fr; }
+#main { width: 1fr; padding: 1 2 0 2; }
+#sidebar { width: 29; background: #17221e; padding: 1 2; border-left: solid #345044; }
+#sidebar Static { margin-bottom: 1; }
+#sidebar .label { margin-top: 1; }
+.compact #sidebar, .context-hidden #sidebar { display: none; }
+.compact #surface { display: none; }
+.label { color: #7fe2b8; text-style: bold; height: auto; }
+.muted { color: #adbbb3; height: auto; }
+#conversation { height: 1fr; background: #101816; margin: 1 0; padding: 0 1; border-left: solid #345044; }
+#composer { height: 5; background: #1b2924; border: round #547468; color: #f1fcf5; }
+#composer:focus { border: round #7fe2b8; }
+.actions { height: 3; }
+Button { margin-right: 1; }
+#status { height: 1; color: #b5d2c1; padding: 0 2; background: #1b2924; }
+Footer { background: #17221e; }
+PatchReview { align: center middle; background: #101816cc; }
+#review-panel { width: 94%; height: 88%; max-width: 130; padding: 1 2; border: round #7fe2b8; background: #17221e; }
+#patch { height: 1fr; margin: 1 0; padding: 0 1; background: #101816; }
+CommandMenu { align: center middle; background: #101816cc; }
+#command-panel { width: 54; max-width: 95%; height: auto; padding: 1 2; border: round #547468; background: #17221e; }
+#commands { height: auto; margin-top: 1; }
+#live { height: auto; max-height: 8; color: #b7cbc2; padding: 0 1; border-left: solid #345044; }
+PromptArguments { align: center middle; background: #101816cc; }
+#prompt-panel { width: 60; max-width: 95%; height: auto; padding: 1 2; border: round #547468; background: #17221e; }
+#prompt-panel Input { margin-top: 1; }

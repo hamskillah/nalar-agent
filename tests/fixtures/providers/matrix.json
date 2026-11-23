@@ -1,0 +1,62 @@
+{
+  "profiles": [
+    {
+      "name": "hosted",
+      "base_url": "https://api.example.com/v1/chat/completions",
+      "model": "vendor/model",
+      "headers": {},
+      "session": true,
+      "models_path": "/v1/models"
+    },
+    {
+      "name": "gateway",
+      "base_url": "https://gateway.example/v1/chat/completions",
+      "model": "@cf/meta/llama:free",
+      "headers": {
+        "X-Organization": "team"
+      },
+      "session": false,
+      "models_path": "/v1/models"
+    },
+    {
+      "name": "loopback",
+      "base_url": "http://127.0.0.1:{port}/v1/chat/completions",
+      "model": "local/model",
+      "headers": {},
+      "session": false,
+      "models_path": "/v1/models"
+    }
+  ],
+  "responses": {
+    "text": {
+      "choices": [
+        {
+          "message": {
+            "role": "assistant",
+            "content": "OK"
+          }
+        }
+      ]
+    },
+    "tool": {
+      "choices": [
+        {
+          "message": {
+            "role": "assistant",
+            "content": "",
+            "tool_calls": [
+              {
+                "id": "call_1",
+                "type": "function",
+                "function": {
+                  "name": "list_files",
+                  "arguments": "{\"path\": \".\"}"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
