@@ -6,7 +6,8 @@
   environment variable is `NALAR_API_KEY`, and internal process/review
   documents were removed from the public tree. The bundled default endpoint is
   now a local OpenAI-compatible server at `127.0.0.1:11434`; hosted gateways are
-  configured explicitly.
+  configured explicitly. The session header name is configurable for gateways
+  that use a custom header.
 
 ## 0.7.280
 

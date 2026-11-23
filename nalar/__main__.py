@@ -108,7 +108,7 @@ def _client(provider, model, fallbacks=()):
     def build(name):
         return ChatCompletions(name, key, base_url=provider.base_url,
                           extra_headers=dict(provider.headers),
-                          session=provider.session_header,
+                          session=bool(provider.session_header), session_header=(provider.session_header if isinstance(provider.session_header, str) else 'x-nalar-session'),
                           max_tokens=provider.max_tokens,
                           temperature=provider.temperature,
                           timeout=provider.timeout)

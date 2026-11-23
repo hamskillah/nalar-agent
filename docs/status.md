@@ -10,7 +10,7 @@ endpoint.
 
 ## Verified
 
-- `python -m unittest discover -s tests -q`: **1006 tests, OK**.
+- `python -m unittest discover -s tests -q`: **1007 tests, OK**.
 - `ruff check --select E9,F63,F7,F82,F601 nalar tests`: clean.
 - Full suite in CI on Linux Python 3.12 and 3.13.
 - Compatibility smoke in CI on Ubuntu, macOS and Windows, Python 3.12 and 3.13.

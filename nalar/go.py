@@ -144,7 +144,8 @@ class ChatCompletions:
     """OpenAI-compatible chat completions; the default provider is the default endpoint."""
 
     def __init__(self, model, api_key, *, base_url=DEFAULT_BASE, extra_headers=None,
-                 session=True, max_tokens=1536, temperature=0.0, timeout=60.0):
+                 session=True, session_header="x-nalar-session",
+                 max_tokens=1536, temperature=0.0, timeout=60.0):
         if not MODEL_ID.fullmatch(model):
             raise ValueError("use the provider's model ID (letters, digits, . _ : / @ -)")
         if not api_key or not re.fullmatch(r"[!-~]{1,4096}", api_key):
@@ -153,6 +154,11 @@ class ChatCompletions:
         self._key = api_key
         self._session = None
         self._session_enabled = bool(session)
+        if (not isinstance(session_header, str)
+                or not re.fullmatch(r"[A-Za-z0-9-]{1,64}", session_header)
+                or session_header.lower() in {"host", "content-length", "transfer-encoding"}):
+            raise ValueError("invalid session header name")
+        self._session_header = session_header
         if type(max_tokens) is not int or not 1 <= max_tokens <= 32_768:
             raise ValueError("max_tokens must be between 1 and 32768")
         if (isinstance(temperature, bool) or not isinstance(temperature, (int, float))
@@ -221,7 +227,7 @@ class ChatCompletions:
         if self._session_enabled:
             if self._session is None or (messages is not None and len(messages) == 2):
                 self._session = uuid4().hex
-            headers["x-nalar-session"] = self._session
+            headers[self._session_header] = self._session
         return headers
 
     def stream(self, messages, tools, on_text=None, cancel=None):

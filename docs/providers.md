@@ -50,8 +50,8 @@ provider.
 - `api_key_env`: an environment variable name, never the key itself.
 - `headers`: at most eight headers; transport headers and control characters are
   refused; values are Latin-1 and support `{env:NAME}`.
-- `session_header`: sends a rotating `x-nalar-session` header. Disable it if your
-  gateway rejects unknown headers.
+- `session_header`: `true` sends a rotating `x-nalar-session` header; a string
+  such as `"x-provider-session"` uses that header name; `false` disables it.
 - `max_tokens` (1–32768), `temperature` (0–2), `timeout` (1–600 s).
 - `fallback_models`: tried only when the provider reports the model as missing
   (`http_404`). Auth, rate-limit and transport errors are surfaced.

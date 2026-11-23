@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/hamskillah/nalar-agent/actions/workflows/check.yml"><img alt="Checks" src="https://github.com/hamskillah/nalar-agent/actions/workflows/check.yml/badge.svg"></a>
   <a href="https://github.com/hamskillah/nalar-agent/actions/workflows/compat.yml"><img alt="Compatibility smoke" src="https://github.com/hamskillah/nalar-agent/actions/workflows/compat.yml/badge.svg"></a>
-  <img alt="Tests" src="https://img.shields.io/badge/tests-1006-brightgreen">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-1007-brightgreen">
   <img alt="Python" src="https://img.shields.io/badge/python-3.12%20%7C%203.13-blue">
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-blue"></a>
   <img alt="Patch-first" src="https://img.shields.io/badge/workflow-patch--first-7ee2b8">

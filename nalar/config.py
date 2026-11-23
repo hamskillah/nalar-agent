@@ -58,7 +58,7 @@ class Provider:
     base_url: str = DEFAULT_BASE
     api_key_env: str = "NALAR_API_KEY"
     headers: tuple = ()
-    session_header: bool = True
+    session_header: bool | str = True
     max_tokens: int = 1536
     temperature: float = 0.0
     timeout: float = 60.0
@@ -319,7 +319,10 @@ def _provider(value):
         resolved[name] = header_value[:512]
     session_header = value.get("session_header", True)
     if not isinstance(session_header, bool):
-        raise ConfigError("provider session_header must be true or false.")
+        if (not isinstance(session_header, str)
+                or not HEADER.fullmatch(session_header)
+                or session_header.lower() in {"host", "content-length", "transfer-encoding"}):
+            raise ConfigError("provider session_header must be true, false or a simple header name.")
     max_tokens = value.get("max_tokens", 1536)
     if type(max_tokens) is not int or not 1 <= max_tokens <= 32_768:
         raise ConfigError("provider max_tokens must be an integer between 1 and 32768.")

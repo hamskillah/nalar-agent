@@ -44,7 +44,7 @@ class Agent:
                 return ChatCompletions(name, os.environ.get(provider.api_key_env),
                                   base_url=provider.base_url,
                                   extra_headers=dict(provider.headers),
-                                  session=provider.session_header,
+                                  session=bool(provider.session_header), session_header=(provider.session_header if isinstance(provider.session_header, str) else 'x-nalar-session'),
                                   max_tokens=provider.max_tokens,
                                   temperature=provider.temperature,
                                   timeout=provider.timeout)
@@ -321,7 +321,7 @@ class WorkspaceAgent:
                 return ChatCompletions(name, os.environ.get(provider.api_key_env),
                                   base_url=provider.base_url,
                                   extra_headers=dict(provider.headers),
-                                  session=provider.session_header,
+                                  session=bool(provider.session_header), session_header=(provider.session_header if isinstance(provider.session_header, str) else 'x-nalar-session'),
                                   max_tokens=provider.max_tokens,
                                   temperature=provider.temperature,
                                   timeout=provider.timeout)

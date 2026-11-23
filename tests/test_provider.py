@@ -276,3 +276,11 @@ class ProviderConfigTests(unittest.TestCase):
 
         reply = _decode('{"choices":[{"message":{"content":"hi"}}],"usage":[]}')
         self.assertEqual((reply.text, reply.tokens), ("hi", None))
+
+    def test_session_header_can_be_named_for_a_gateway(self):
+        client = ChatCompletions("m", "k",
+                                 base_url="https://gateway.example/v1/chat/completions",
+                                 session_header="x-provider-session")
+        headers = client._headers([{"role": "user", "content": "x"}])
+        self.assertIn("x-provider-session", headers)
+        self.assertNotIn("x-nalar-session", headers)
